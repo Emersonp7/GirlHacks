@@ -1,3 +1,4 @@
 use spotify to track and get users top songs based on a specific time frame and genre.
 time frames: yesterday, last week, last month, all time (maybe last year too)
 top ranges: top 5, top 10
+

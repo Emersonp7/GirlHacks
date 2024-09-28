@@ -1,12 +1,15 @@
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 
 clientId = "4c9e4fb01bd345989368485e373fcc19"
 clientSecret = "f56247ad580b433681d4edadccef32f6"
+redirectUri = "https://localhost:3000/callback"
 
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=clientId, client_secret=clientSecret))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=clientId, 
+                                               client_secret=clientSecret, 
+                                                redirect_uri=redirectUri, 
+                                                scope="user-top-read"))
 
-temp = "6apkynw8DBUza2600Wm70t"
-print(sp.album(temp))
+tracks = sp.current_user_top_tracks(limit=10)
 
-https://open.spotify.com/user/mgyr4e4lvgz59562k8h02lh00?si=a12f944902da46ec
+print(tracks)
