@@ -19,6 +19,15 @@
         </nav>
     </header>
     <title>Spinback Records</title>
+    <p>Login Successful</p>
+    <style>
+        p {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            color: black;
+        }
+    </style>
     <h2>Spinback Records</h2>
     <style>
         h2 {
@@ -39,7 +48,7 @@
             color: black;
         }
     </style>
-    <label for="time">Time Period:</label>
+    <label for="times">Time Period:</label>
     <style>
         label {
             font-family: 'Courier New', Courier, monospace;
@@ -64,9 +73,33 @@
             font-size: 16px;
             color: black;
         }
+    </style><br>
+    <label for="time">Length:</label>
+    <style>
+        label {
+            font-family: 'Courier New', Courier, monospace;
+            display: block;
+            text-align: center;
+            font-size: 16px;
+            color: black;
+        }
     </style>
-    
-    <button id="submit">Submit</button>
+    <select name="amt" id="amt">
+        <option value = "test"> </option>
+        <option value = "Five">5</option>
+        <option value="Ten">10</option>
+    </select>
+    <style type="text/css">
+        select {
+            font-family: 'Courier New', Courier, monospace;
+            display: block;
+            margin: 0 auto;
+            font-size: 16px;
+            color: black;
+        }
+    </style><br>
+
+    <button id="submit">Checkout</button>
     <style>
         #submit {
             background-color: green;
@@ -85,4 +118,5 @@
             margin-left: auto;
             margin-right: auto;
         }
+    </style>
 </html>
