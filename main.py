@@ -10,6 +10,9 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=clientId,
                                                 redirect_uri=redirectUri, 
                                                 scope="user-top-read"))
 
-tracks = sp.current_user_top_tracks(limit=10)
+tracks = sp.current_user_top_tracks(limit=5)
 
-print(tracks)
+# Tracks["items"][index]["name"]
+# Index is index of songs in the list
+
+print(len(tracks["items"]))
