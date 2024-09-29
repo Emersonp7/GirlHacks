@@ -11,7 +11,7 @@
                     a {
                         text-decoration: none;
                         color: black;
-                        font-family: 'Courier New', Courier, monospace;
+                        font-family: Georgia, Times, 'Times New Roman', serif;
                         font-size: 20px;
                     }
                 </style>
@@ -19,20 +19,11 @@
         </nav>
     </header>
     <title>Spinback Records</title>
-    <p>Login Successful</p>
-    <style>
-        p {
-            text-align: center;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
-            color: black;
-        }
-    </style>
     <h2>Spinback Records</h2>
     <style>
         h2 {
             text-align: center;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Georgia, Times, 'Times New Roman', serif;
             font-size: 50px;
             font-style: italic;
             color: black;
@@ -42,16 +33,24 @@
     <style>
         h3 {
             text-align: center;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 25px;
-            font-style: italic;
+            color: black;
+        }
+    </style>
+    <p>Customize your spinback.</p>
+    <style>
+        p {
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 14px;
             color: black;
         }
     </style>
     <label for="times">Time Period:</label>
     <style>
         label {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             display: block;
             text-align: center;
             font-size: 16px;
@@ -67,7 +66,7 @@
     </select>
     <style type="text/css">
         select {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             display: block;
             margin: 0 auto;
             font-size: 16px;
@@ -77,7 +76,7 @@
     <label for="time">Length:</label>
     <style>
         label {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             display: block;
             text-align: center;
             font-size: 16px;
@@ -91,7 +90,7 @@
     </select>
     <style type="text/css">
         select {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             display: block;
             margin: 0 auto;
             font-size: 16px;
@@ -102,14 +101,14 @@
     <button id="submit">Checkout</button>
     <style>
         #submit {
-            background-color: green;
-            color: white;
+            background-color: rgb(1, 255, 1);
+            color: rgb(0, 0, 0);
             border: none;
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;
             font-weight: bold;
             margin: 4px 2px;
@@ -117,6 +116,19 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            border-radius: 8px;
         }
+    </style>
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+            var time = document.getElementById('time').value;
+            var amt = document.getElementById('amt').value;
+            if (time === 'test' || amt === 'test') {
+                alert('Please fill every dropdown!');
+            } else {
+                window.location.href = 'final.html';
+            }
+        });
+    </script>
     </style>
 </html>
