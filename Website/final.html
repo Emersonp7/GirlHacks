@@ -27,7 +27,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 16%;
+            width: 17%;
         }
     </style>
     <br>
@@ -53,20 +53,14 @@
         <ul id="top-tracks"></ul>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                // Retrieve the number of top songs from localStorage
-                const topSongsNumber = localStorage.getItem('topSongsNumber') || 5; // Default to 5 if not set
-                // Fetch the top tracks data from the Flask server
-                fetch(`http://localhost:5000/top-tracks?limit=${topSongsNumber}`)
-                    .then(response => response.json())
-                    .then(tracks => {
-                        const tracksList = document.getElementById('top-tracks');
-                        tracks.forEach(track => {
-                            const li = document.createElement('li');
-                            li.textContent = track;
-                            tracksList.appendChild(li);
-                        });
-                    })
-                    .catch(error => console.error('Error fetching top tracks:', error));
+                // Retrieve the tracklist data from localStorage
+                const tracks = JSON.parse(localStorage.getItem('tracklist'));
+                const tracksList = document.getElementById('top-tracks');
+                tracks.forEach(track => {
+                    const li = document.createElement('li');
+                    li.textContent = track;
+                    tracksList.appendChild(li);
+                });
             });
         </script>
         <style>
