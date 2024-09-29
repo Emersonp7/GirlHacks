@@ -19,16 +19,18 @@
         </nav>
     </header>
     <title>Spinback Records</title>
-    <h2>Spinback Records</h2>
+    <picture>
+        <img src="Spinback.png" alt="SpinbackRecords" width="300" height="300">
+      </picture>
     <style>
-        h2 {
-            text-align: center;
-            font-family: Georgia, Times, 'Times New Roman', serif;
-            font-size: 50px;
-            font-style: italic;
-            color: black;
+        picture {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 16%;
         }
     </style>
+    <br>
     <h3>Your Spinback</h3>
     <style>
         h3 {
@@ -48,8 +50,25 @@
                 color: black;
             }
         </style>
-        <h4>Song 1</h4>
-        <h4>Song 2</h4>
+        <ul id="top-tracks"></ul>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Retrieve the number of top songs from localStorage
+                const topSongsNumber = localStorage.getItem('topSongsNumber') || 5; // Default to 5 if not set
+                // Fetch the top tracks data from the Flask server
+                fetch(`http://localhost:5000/top-tracks?limit=${topSongsNumber}`)
+                    .then(response => response.json())
+                    .then(tracks => {
+                        const tracksList = document.getElementById('top-tracks');
+                        tracks.forEach(track => {
+                            const li = document.createElement('li');
+                            li.textContent = track;
+                            tracksList.appendChild(li);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching top tracks:', error));
+            });
+        </script>
         <style>
             h4 {
                 text-align: center;

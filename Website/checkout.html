@@ -3,132 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <header>
-        <nav>
-            <ul>
-                <a href="main.html">Home</a>
-                <style>
-                    a {
-                        text-decoration: none;
-                        color: black;
-                        font-family: Georgia, Times, 'Times New Roman', serif;
-                        font-size: 20px;
-                    }
-                </style>
-            </ul>
-        </nav>
-    </header>
-    <title>Spinback Records</title>
-    <h2>Spinback Records</h2>
+    <title>Checkout</title>
     <style>
         h2 {
             text-align: center;
-            font-family: Georgia, Times, 'Times New Roman', serif;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 50px;
             font-style: italic;
             color: black;
         }
-    </style>
-    <h3>Your Checkout</h3>
-    <style>
         h3 {
             text-align: center;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 25px;
+            font-style: italic;
             color: black;
         }
-    </style>
-    <p>Customize your spinback.</p>
-    <style>
-        p {
-            text-align: center;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 14px;
-            color: black;
-        }
-    </style>
-    <label for="times">Time Period:</label>
-    <style>
-        label {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            display: block;
-            text-align: center;
-            font-size: 16px;
-            color: black;
-        }
-    </style>
-    <select name="time" id="time">
-        <option value = "test"> </option>
-        <option value = "1W">1 week</option>
-        <option value="1M">1 month</option>
-        <option value="6M">6 months</option>
-        <option value="1Y">1 year</option>
-    </select>
-    <style type="text/css">
-        select {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            display: block;
-            margin: 0 auto;
-            font-size: 16px;
-            color: black;
-        }
-    </style><br>
-    <label for="time">Length:</label>
-    <style>
-        label {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            display: block;
-            text-align: center;
-            font-size: 16px;
-            color: black;
-        }
-    </style>
-    <select name="amt" id="amt">
-        <option value = "test"> </option>
-        <option value = "Five">5</option>
-        <option value="Ten">10</option>
-    </select>
-    <style type="text/css">
-        select {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            display: block;
-            margin: 0 auto;
-            font-size: 16px;
-            color: black;
-        }
-    </style><br>
-
-    <button id="submit">Checkout</button>
-    <style>
-        #submit {
-            background-color: rgb(1, 255, 1);
-            color: rgb(0, 0, 0);
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
+        .dropdown {
+            position: relative;
             display: inline-block;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 4px 2px;
-            cursor: pointer;
+            text-align: center;
+            width: 100%;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <picture>
+        <img src="Spinback.png" alt="SpinbackRecords" width="300" height="300">
+      </picture>
+    <style>
+        picture {
             display: block;
             margin-left: auto;
             margin-right: auto;
-            border-radius: 8px;
+            width: 16%;
         }
     </style>
+    <br>
+    <h3>Your Checkout</h3>
+    <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Choose Length</a>
+        <div class="dropdown-content">
+            <a href="#" onclick="selectTopSongs(5)">Top 5</a>
+            <a href="#" onclick="selectTopSongs(10)">Top 10</a>
+        </div>
+    </div>
     <script>
-        document.getElementById('submit').addEventListener('click', function() {
-            var time = document.getElementById('time').value;
-            var amt = document.getElementById('amt').value;
-            if (time === 'test' || amt === 'test') {
-                alert('Please fill every dropdown!');
-            } else {
-                window.location.href = 'final.html';
-            }
-        });
+        function selectTopSongs(number) {
+            localStorage.setItem('topSongsNumber', number);
+            window.location.href = 'final.html';
+        }
     </script>
-    </style>
+</body>
 </html>
