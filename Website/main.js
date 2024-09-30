@@ -1,11 +1,7 @@
 document.getElementById('myBtn').addEventListener('click', function() {
     const clientId = '4c9e4fb01bd345989368485e373fcc19';
     const redirectUri = 'https://localhost:3000/callback';
-<<<<<<< HEAD
-    const scopes = 'user-read-private user-read-email';
-=======
     const scopes = 'user-read-private user-read-email user-top-read';
->>>>>>> f6256b91d556f6a20b9c56d779549a3e376e3c56
 
     const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
 
