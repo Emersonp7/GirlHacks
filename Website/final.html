@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <header>
+        <nav>
+            <ul>
+                <a href="main.html">Home</a>
+                <style>
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        font-family: Georgia, Times, 'Times New Roman', serif;
+                        font-size: 20px;
+                    }
+                </style>
+            </ul>
+        </nav>
+    </header>
+    <title>Spinback Records</title>
+    <picture>
+        <img src="Spinback.png" alt="SpinbackRecords" width="300" height="300">
+      </picture>
+    <style>
+        picture {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 16%;
+        }
+    </style>
+    <br>
+    <h3>Your Spinback</h3>
+    <style>
+        h3 {
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 25px;
+            color: black;
+        }
+    </style>
+    <details>
+        <summary>Your most listened songs were...</summary>
+        <style>
+            summary {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                text-align: center;
+                font-size: 16px;
+                color: black;
+            }
+        </style>
+        <ul id="top-tracks"></ul>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Retrieve the number of top songs from localStorage
+                const topSongsNumber = localStorage.getItem('topSongsNumber') || 5; // Default to 5 if not set
+                // Fetch the top tracks data from the Flask server
+                fetch(`http://localhost:5000/top-tracks?limit=${topSongsNumber}`)
+                    .then(response => response.json())
+                    .then(tracks => {
+                        const tracksList = document.getElementById('top-tracks');
+                        tracks.forEach(track => {
+                            const li = document.createElement('li');
+                            li.textContent = track;
+                            tracksList.appendChild(li);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching top tracks:', error));
+            });
+        </script>
+        <style>
+            h4 {
+                text-align: center;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 20px;
+                color: black;
+            }
+        </style>
+      </details>
+      <details>
+        <summary>Meanwhile, your most listened artists were...</summary>
+        <style>
+            summary {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                text-align: center;
+                font-size: 16px;
+                color: black;
+            }
+        </style>
+        <h4>Artist 1</h4>
+        <h4>Artist 2</h4>
+        <style>
+            h4 {
+                text-align: center;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 20px;
+                color: black;
+            }
+        </style>
+      </details>
+</html>

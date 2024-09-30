@@ -1,5 +1,8 @@
+from flask import Flask, jsonify
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+
+app = Flask(__name__)
 
 clientId = "4c9e4fb01bd345989368485e373fcc19"
 clientSecret = "f56247ad580b433681d4edadccef32f6"
@@ -46,6 +49,18 @@ class Spotify:
             artistlist.append(artists["items"][i]["name"])
         return artistlist
 
+<<<<<<< HEAD
+=======
+@app.route('/top-tracks')
+def top_tracks():
+    spotify = Spotify(clientID='4c9e4fb01bd345989368485e373fcc19', clientSecret='f56247ad580b433681d4edadccef32f6', redirectUrl='https://localhost:3000/callback', scope='user-top-read')
+    tracks = spotify.getTopTracks(5)
+    return jsonify(tracks)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+>>>>>>> f6256b91d556f6a20b9c56d779549a3e376e3c56
 # spotify = Spotify(clientId, clientSecret, redirectUri, "user-top-read")
 # print(spotify.getTopTracks(5))
 # print(spotify.getTopArtists(5))
