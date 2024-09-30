@@ -10,10 +10,16 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=clientId,
                                                 redirect_uri=redirectUri, 
                                                 scope="user-top-read"))
 
-artists = sp.current_user_top_artists(limit=50)
+# i = 0
+# print(artists["items"][i]["name"], artists["items"][i]['genres'])
 
 # Tracks["items"][index]["name"]
 # Index is index of songs in the list
+
+songs = sp.current_user_top_tracks(limit=50, time_range="long_term")
+for i in range(len(songs["items"])):
+    print(songs["items"][i]["name"])
+
 
 
 class Spotify:
@@ -26,19 +32,19 @@ class Spotify:
                                                client_secret=clientSecret, 
                                                 redirect_uri=redirectUrl, 
                                                 scope=scope))
-    def getTopTracks(self, limit) -> list[str]:
+    def getTopTracks(self, limit, timeframe) -> list[str]:
         tracks = self.sp.current_user_top_tracks(limit=limit)
         tracklist = []
         for i in range(len(tracks["items"])):
             tracklist.append(tracks["items"][i]["name"])
         return tracklist
+    
     def getTopArtists(self, limit) -> list[str]:
         artists = self.sp.current_user_top_artists(limit=limit)
         artistlist = []
         for i in range(len(artists["items"])):
             artistlist.append(artists["items"][i]["name"])
         return artistlist
-
 
 # spotify = Spotify(clientId, clientSecret, redirectUri, "user-top-read")
 # print(spotify.getTopTracks(5))
